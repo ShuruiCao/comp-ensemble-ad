@@ -1,1 +1,1 @@
-# comp-ensemble-ad
+# Complementary Ensemble for Trajectory Anomaly Detection
