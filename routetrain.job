@@ -1,0 +1,11 @@
+#!/bin/bash
+# use the bash shell
+
+module load anaconda3
+
+module load cuda/12.4.0; conda activate py399
+
+cd /ocean/projects/cis220071p/caos/LSTM
+
+python ModelTrain_Route_2.py
+python ModelTrain_Route_3.py
