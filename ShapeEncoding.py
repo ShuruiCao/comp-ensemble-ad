@@ -102,7 +102,7 @@ basepath = '/LSTM'
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # # List of files to encode
-# data_directory = '/data/shurui/{}Synthetic/Processed'.format(dataset)
+
 # # backforth03 = pd.read_pickle(os.path.join(data_directory, 'shape_backforth03.pickle'))
 # # stop03 = pd.read_pickle(os.path.join(data_directory, 'shape_stop03.pickle'))
 # # detour03 = pd.read_pickle(os.path.join(data_directory, 'shape_detour03.pickle'))
