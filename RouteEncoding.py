@@ -126,30 +126,11 @@ def apply_autoencoder_and_calculate_loss(autoencoder, normalized_sequences, devi
 #### ENCODING
 
 
-basepath = '/ocean/projects/cis220071p/caos/LSTM'
+basepath = '/LSTM'
 # data_directory = os.path.join(basepath,'ExtractedTrips/l3harris/tripdata')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# List of files to encode
-# data_directory = '/data/shurui/{}Synthetic/Processed'.format(dataset)
-data_directory = '/ocean/projects/cis220071p/caos/LSTM/Chengdu/processed'
-train = pd.read_pickle(os.path.join(data_directory, 'Interpolated/route_train_interpolated.pkl'))
-train = filter_trips(train, 3, 150000)
-val = pd.read_pickle(os.path.join(data_directory, 'Interpolated/route_val_interpolated.pkl'))
-val = filter_trips(val, 3, 150000)
-anomalous = pd.read_pickle(os.path.join(data_directory, 'Interpolated/route_anomalous_interpolated.pkl'))
-anomalous = filter_trips(anomalous, 3, 150000)
-# backforth03 = pd.read_pickle(os.path.join(data_directory, 'route_backforth03_interpolated.pkl'))
-# stop03 = pd.read_pickle(os.path.join(data_directory, 'route_stop03_interpolated.pkl'))
-# detour03 = pd.read_pickle(os.path.join(data_directory, 'route_detour03_interpolated.pkl'))
-# speed2 = pd.read_pickle(os.path.join(data_directory, 'route_speed2_interpolated.pkl'))
-# test = pd.read_pickle('/data/shurui/{}/processed/Interpolated/route_test_interpolated.pkl'.format(dataset))
-# stitch = pd.read_pickle(os.path.join(data_directory, 'route_stitch_interpolated.pkl'))
-# rotation = pd.read_pickle(os.path.join(data_directory, 'route_rotation_interpolated.pkl'))
-# repeat05 = pd.read_pickle(os.path.join(data_directory, 'route_repeat05_interpolated.pkl'))
-# repeat1 = pd.read_pickle(os.path.join(data_directory, 'route_repeat1_interpolated.pkl'))
-# loop = pd.read_pickle(os.path.join(data_directory, 'route_loop_interpolated.pkl'))
 print('Loading data finished')
 # Example dictionaries to process
 
@@ -248,8 +229,7 @@ for config in model_configurations:
         original_lengths = [len(seq) for seq in normalized_sequences.values()]
         embeddings, loss_dict = apply_autoencoder_and_calculate_loss(trainer,normalized_sequences,device,batch_size=128)
 
-        filepathemb = '/ocean/projects/cis220071p/caos/LSTM/Extracted/{}/{}_embeddings_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
-        filepathloss = '/ocean/projects/cis220071p/caos/LSTM/Extracted/{}/{}_loss_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
+
         with open(filepathemb, 'wb') as file:
             pickle.dump(embeddings, file)
         with open(filepathloss, 'wb') as file:
