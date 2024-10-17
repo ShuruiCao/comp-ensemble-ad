@@ -96,20 +96,10 @@ def apply_autoencoder_and_calculate_loss(autoencoder, normalized_sequences, devi
 
 #### ENCODING
 
-basepath = '/ocean/projects/cis220071p/caos/LSTM'
+basepath = '/LSTM'
 # data_directory = os.path.join(basepath,'ExtractedTrips/l3harris/tripdata')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# List of files to encode
-# data_directory = '/data/shurui/{}Synthetic/Processed'.format(dataset)
-data_directory = '/ocean/projects/cis220071p/caos/LSTM/Chengdu/processed'
-train = pd.read_pickle(os.path.join(data_directory, 'shape_train.pkl'))
-train = filter_trips(train, 3, 150000)
-val = pd.read_pickle(os.path.join(data_directory, 'shape_val.pkl'))
-val = filter_trips(val, 3, 150000)
-anomalous = pd.read_pickle(os.path.join(data_directory, 'shape_anomalous.pkl'))
-anomalous = filter_trips(anomalous, 3, 150000)
 
 # # List of files to encode
 # data_directory = '/data/shurui/{}Synthetic/Processed'.format(dataset)
@@ -117,7 +107,7 @@ anomalous = filter_trips(anomalous, 3, 150000)
 # # stop03 = pd.read_pickle(os.path.join(data_directory, 'shape_stop03.pickle'))
 # # detour03 = pd.read_pickle(os.path.join(data_directory, 'shape_detour03.pickle'))
 # # speed2 = pd.read_pickle(os.path.join(data_directory, 'shape_speed2.pickle'))
-# # test = pd.read_pickle('/data/shurui/{}/processed/shape_test.pkl'.format(dataset))
+
 # stitch = pd.read_pickle(os.path.join(data_directory, 'shape_stitch.pickle'))
 # rotation = pd.read_pickle(os.path.join(data_directory, 'shape_rotation.pickle'))
 # repeat05 = pd.read_pickle(os.path.join(data_directory, 'shape_repeat05.pickle'))
@@ -220,8 +210,8 @@ for config in model_configurations:
         original_lengths = [len(seq) for seq in normalized_sequences.values()]
         embeddings, loss_dict = apply_autoencoder_and_calculate_loss(trainer,normalized_sequences,device,batch_size=128)
 
-        filepathemb = '/ocean/projects/cis220071p/caos/LSTM/Extracted/{}/{}_embeddings_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
-        filepathloss = '/ocean/projects/cis220071p/caos/LSTM/Extracted/{}/{}_loss_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
+        filepathemb = '/LSTM/Extracted/{}/{}_embeddings_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
+        filepathloss = '/LSTM/Extracted/{}/{}_loss_{}_{}_{}.pkl'.format(datasetsaving,modeltype,datasetsaving,dict_name,embsize)
         with open(filepathemb, 'wb') as file:
             pickle.dump(embeddings, file)
         with open(filepathloss, 'wb') as file:
