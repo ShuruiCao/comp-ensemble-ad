@@ -7,7 +7,7 @@ import os
 import pandas as pd
 torch.cuda.empty_cache()
 
-# data_directory = os.path.join(basepath,'ExtractedTrips/l3harris/tripdata')
+
 data_directory = ''
 
 train = pd.read_pickle(os.path.join(data_directory, 'shape_train.pkl'))
