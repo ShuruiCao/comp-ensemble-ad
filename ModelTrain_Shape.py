@@ -6,9 +6,9 @@ from LSTM_model import LSTMAutoencoder, LSTMAutoencoderTrainer
 import os
 import pandas as pd
 torch.cuda.empty_cache()
-basepath = '/ocean/projects/cis220071p/caos/LSTM'
+
 # data_directory = os.path.join(basepath,'ExtractedTrips/l3harris/tripdata')
-data_directory = '/ocean/projects/cis220071p/caos/LSTM/Chengdu/processed'
+data_directory = ''
 
 train = pd.read_pickle(os.path.join(data_directory, 'shape_train.pkl'))
 val = pd.read_pickle(os.path.join(data_directory, 'shape_val.pkl'))
