@@ -9,28 +9,22 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px; /* Limit content width */
-            margin: 0 auto;
             padding: 20px;
-            background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
         h1 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 15px;
         }
         p {
-            font-size: 16px;
+            font-size: 18px;
             color: #555;
-            margin: 10px 0;
+            margin: 20px auto;
+            line-height: 1.6;
+            max-width: 800px; /* Keep text lines compact */
         }
         .resources {
-            margin: 20px auto;
+            margin: 20px 0;
         }
         .buttons a {
             display: inline-block;
@@ -49,9 +43,11 @@
             background-color: #e8f5e9;
             padding: 15px;
             margin: 20px auto;
-            border-left: 5px solid #4caf50;
+            display: inline-block;
             text-align: left;
+            border-left: 5px solid #4caf50;
             font-size: 14px;
+            max-width: 800px; /* Keep it aligned with the text width */
         }
         .footer {
             margin-top: 30px;
@@ -63,18 +59,23 @@
 <body>
     <div class="container">
         <h1>Trajectory Anomaly Detection with By-Design Complementary Detectors</h1>
-        <p>We propose CETrajAD, an ensemble method that combines complementary detectors to detect diverse and realistic trajectory anomalies. By leveraging three trajectory embeddings—Route, Speed, and Shape—our approach captures various anomaly types based on length, direction, shape, and speed. Through a novel ensemble design, CETrajAD improves anomaly detection performance.</p>
-
+        <p>
+            We propose CETrajAD, an ensemble method that combines complementary detectors to detect diverse and realistic trajectory anomalies. 
+            By leveraging three trajectory embeddings—Route, Speed, and Shape—our approach captures various anomaly types based on length, 
+            direction, shape, and speed. Through a novel ensemble design, CETrajAD improves anomaly detection performance.
+        </p>
         <!-- <h3>Resources:</h3> -->
-        <div class="buttons">
-            <a href="https://github.com/ShuruiCao/comp-ensemble-ad" target="_blank">Code</a>
-            <a href="https://link-to-paper.com" target="_blank">Paper</a>
-            <a href="https://link-to-slides.com" target="_blank">Slides</a>
+        <div class="resources">
+            <div class="buttons">
+                <a href="https://github.com/ShuruiCao/comp-ensemble-ad" target="_blank">Code</a>
+                <a href="https://link-to-paper.com" target="_blank">Paper</a>
+                <a href="https://link-to-slides.com" target="_blank">Slides</a>
+            </div>
         </div>
 
-        <h3>Citation:</h3>
+        <!-- <h3>Citation:</h3> -->
         <div class="citation">
-            <p>Cao, Shurui, and Akoglu, Leman. "Trajectory Anomaly Detection with By-Design Complementary Detectors." In <i>SIAM International Conference on Data Mining (SDM), 2025.</i></p>
+            <p>Shurui Cao, Leman Akoglu. Trajectory Anomaly Detection with By-Design Complementary Detectors. In <i>SIAM International Conference on Data Mining (SDM), 2025.</i></p>
         </div>
 
         <div class="footer">
