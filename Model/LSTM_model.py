@@ -18,7 +18,7 @@ class Encoder(nn.Module):
         )
         
     def forward(self, x):
-        # Here, x should have a shape of [batch_size, seq_len, n_features]
+        # X shape [batch_size, seq_len, n_features]
         x, (hidden_n, _) = self.rnn(x)
         
         return hidden_n[-1]
@@ -41,7 +41,7 @@ class Decoder(nn.Module):
     def forward(self, x, seq_len):
         x = x.unsqueeze(1).repeat(1, seq_len, 1)  # Repeat x for seq_len times
         x, _ = self.rnn(x)
-        x = self.output_layer(x)  # [batch_size, seq_len, n_features]
+        x = self.output_layer(x)  # Shape: [batch_size, seq_len, n_features]
         return x
 
 
@@ -60,37 +60,6 @@ class LSTMAutoencoder(nn.Module):
             return decoded, encoded  # Return both reconstruction and embeddings
         else:
             return decoded
-    
-    
-# padded & pack sequence
-# from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
-
-# class LSTMAutoencoder(nn.Module):
-#     def __init__(self, input_size, hidden_size, num_layers, dropout):
-#         super(LSTMAutoencoder, self).__init__()
-        
-#         # Encoder
-#         self.lstm = nn.LSTM(input_size, hidden_size, num_layers=num_layers, dropout=dropout, batch_first=True)
-        
-#         # Decoder
-#         self.decoder_lstm = nn.LSTM(hidden_size, input_size, num_layers=num_layers, dropout=dropout, batch_first=True)
-#         self.linear = nn.Linear(hidden_size, input_size)
-        
-#     def forward(self, input, lengths):
-#         # Encoder
-#         packed_input = pack_padded_sequence(input, lengths, batch_first=True)
-#         packed_output, (hidden, cell) = self.lstm(packed_input)
-        
-#         # Decode step-by-step
-#         decoded_outputs = []
-#         decoder_input = torch.zeros((input.size(0), 1, input.size(2))).to(input.device)  # Starting point for decoder
-#         for t in range(input.size(1)):  # For each time step
-#             output, (hidden, cell) = self.decoder_lstm(decoder_input, (hidden, cell))
-#             decoder_input = output
-#             decoded_outputs.append(output)
-
-#         decoded_outputs = torch.cat(decoded_outputs, dim=1)
-#         return self.linear(decoded_outputs)
 
 
 def load_model(model, path):
