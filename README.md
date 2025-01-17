@@ -19,6 +19,7 @@ Clone this repository:
 
 ## Citation
 If you find this work helpful, please consider citing our paper:
+
 @inproceedings{CETrajAD,
   title={Trajectory Anomaly Detection with By-Design Complementary Detectors},
   author={Cao, Shurui and Akoglu, Leman},
